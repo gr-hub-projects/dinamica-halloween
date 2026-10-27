@@ -298,7 +298,10 @@
 
         function campaignLink(code) {
           const url = new URL(campaignUrl[brand]);
-          url.searchParams.set("promocode", code);
+          if (code) url.searchParams.set("promocode", code);
+          url.searchParams.set("utm_source", "organic_social");
+          url.searchParams.set("utm_medium", "dynamics");
+          url.searchParams.set("utm_campaign", "halloween_game");
           return url.toString();
         }
 
@@ -374,7 +377,7 @@
                 <p class="result-eyebrow">${c.gameOverEyebrow}</p>
                 <h1 class="result-title">${c.gameOver}</h1>
                 <p class="result-copy">${c.gameOverFoot}</p>
-                <div class="result-actions" style="margin-top:27px"><a class="primary-button" href="${campaignUrl[brand]}">${c.discover}${arrowSvg}</a></div>
+                <div class="result-actions" style="margin-top:27px"><a class="primary-button" href="${campaignLink()}">${c.discover}${arrowSvg}</a></div>
               </div>
             </div>`;
         }
